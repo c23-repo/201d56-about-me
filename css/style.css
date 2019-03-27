@@ -1,0 +1,30 @@
+
+html {
+  background-color: black;
+  color: beige;
+  font-family: sans-serif;
+  padding: 8px;
+}
+
+.top {
+  text-align: center;
+  margin: 10px auto 10px auto;
+  width: 50%;
+}
+
+.bio {
+  /* Couldn't remember how to italic, lol: https://www.w3schools.com/cssref/pr_font_font-style.asp  */
+  font-style: italic;
+  color: azure;
+}
+
+.info {
+  color: rgb(147, 201, 201);
+  width: 30%;
+}
+
+.degree {
+  font-style: italic;
+}
+
+
