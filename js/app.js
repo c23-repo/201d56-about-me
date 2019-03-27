@@ -22,7 +22,7 @@ case 'brook':
   alert('Hello, teacher!');
   break;
 
-// I didn't want to repeat code, but luckily I found this: https://stackoverflow.com/questions/13207927/switch-statement-multiple-cases-in-javascript   
+// I didn't want to repeat code, but luckily I found this: https://stackoverflow.com/questions/13207927/switch-statement-multiple-cases-in-javascript
 case 'lena':
 case 'david':
 case 'ashabrai':
@@ -31,11 +31,10 @@ case 'dana':
   alert('Hello helpful TA person!');
   break;
 
-default: 
+default:
   alert('Welcome, ' + userName +'!');
   break;
 }
-
 
 
 var answer1 = prompt('Question #1: \n Do I play video games?');
@@ -53,7 +52,7 @@ var answer2 = prompt('Next question: Do I play Fortnite?');
 
 if(checkAnswer(answer2)){
   alert('Ouch! That\'s another one wrong. \nDon\'t worry, maybe you\'ll get the next one...');
-}else if (score === 0 ){
+} else if (score === 0 ){
   alert('That\'s correct! I respect Battle Royales, but I just don\'t like to play them...');
   score++;
 } else {
@@ -67,7 +66,7 @@ var answer3 = prompt('Here\'s an easy one: \nDo I like to code?');
 if(checkAnswer(answer3)){
   alert('That\'s correct! \n You must be psychic...');
   score++;
-}else if (score === 0 ){
+} else if (score === 0 ){
   alert('Ouch! Another one wrong. \nDon\'t worry, maybe you\'ll get the next one...');
 } else {
   alert('Incorrect, sir! \nI\'ve been playing with code since I was a kid. I think it\'s safe to say that I like it...');
@@ -80,7 +79,7 @@ var answer4 = prompt('Do I have a cat?');
 if(checkAnswer(answer4)){
   alert('That\'s correct! \n He loves me, but he can sometimes be a jerk about it.');
   score++;
-}else if (score === 0 ){
+} else if (score === 0 ){
   alert('Wow! You\'re really bad at this. *ahem* I mean, hang in there champ... \nOne more question to go!');
 } else {
   alert('That is inaccurate. I have a cat who is a total Momma\'s boy.');
@@ -93,7 +92,7 @@ var answer5 = prompt('Do I play CandyCrush?');
 if(checkAnswer(answer5)){
   alert('It\'s weird how well you know me... Are you sure you\'re not my husband, Jeff?');
   score++;
-}else if (score === 0 ){
+} else if (score === 0 ){
   alert('I\'m not even going to tell you if you got that right. I think we both  know the outcome... \nIf I had a cookie, I would give it to you as a    consolation prize.');
 } else {
   alert('Sorry, wrong answer. I\'ve played all of the Candy Crush games. I even have three of them on my phone right now.');
@@ -112,7 +111,7 @@ if(score > 1 ){
 
 function checkAnswer(answer) {
 
-  // Tried to use .contains (Java habits), but after getting an error I used this to fix it: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes 
+  // Tried to use .contains (Java habits), but after getting an error I used this to fix it: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   if(yesArray.includes(answer.toLowerCase())){
     console.log('Input equates to: ' + true);
     return true;
