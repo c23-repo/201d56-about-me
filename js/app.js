@@ -1,10 +1,28 @@
 'use strict';
 
+var score = 0;
+var failScore = 0;
+var dexPokemon = '365';
 var yesArray = ['yes', 'yeah', 'yup', 'yea', 'yep', 'y'];
 var noArray = ['no','nope','nuh-uh','n'];
-var platformArray = ['xbox one', 'xbox', 'playstation', 'playstation portable', 'psp', '3ds', 'gameboy', 'gameboy color', 'phone', 'mobile', 'sega', 'sega genesis', 'pc', 'computer', 'switch', 'nintendon switch'];
-var score = 0;
-var dexPokemon = '365';
+var platformArray = ['xbox one', 'xbox', 'playstation', 'playstation portable', 'psp', '3ds', 'gameboy', 'gameboy color', 'phone', 'mobile', 'sega', 'sega genesis', 'pc', 'computer', 'switch', 'nintendo switch'];
+var correctReplyArray = [
+  'Correct!',
+  'Another one right!',
+  'Yup! You\'re on a roll!',
+  'Bum bum bum... Another one bites the dust. You got it!',
+  'Correctomundo',
+  'I believe the technical term for what you\'re doing is: \'Winning\'',
+  'Are you cheating? I think you might be cheating.',
+  'Holy cow! Your perfect record remains intact!' ];
+var failReplyArray = [
+  'Oops, wrong answer.',
+  'Ouchie, another one wrong.',
+  'Uh oh, wrong answer. You\'re building a small pile of those...',
+  'Wrong answer. Be careful, you\'re starting to make a habit of this.',
+  'Incorrect. This is starting to hurt my feels.',
+  'Are you picking the wrong answers on purpose?',
+  'I have good news, and I have bad news. The good news is, your \'perfect\' score is intact! You don\'t need to hear the bad news...'];
 
 
 alert('Before we get into the serious stuff, let\'s play with some random trivia about me.');
@@ -19,6 +37,7 @@ case 'paula':
   break;
 
 case 'sam':
+case 'michelle':
 case 'nicholas':
 case 'brian':
 case 'brook':
@@ -43,10 +62,11 @@ default:
 var answer1 = prompt('Question #1: \n Do I play video games?');
 
 if(checkAnswer(answer1)){
-  alert('Congrats! You got the first question correct!');
+  alert(correctReplyArray[score]);
   score++;
 } else {
-  alert('Sorry, that is not accurate. I play TONS of video games!');
+  alert(failReplyArray[failScore]);
+  failScore++;
 }
 console.log('User answered question #1 with: ' + answer1);
 console.log('Current score is: ' + score);
@@ -54,12 +74,11 @@ console.log('Current score is: ' + score);
 var answer2 = prompt('Next question: Do I play Fortnite?');
 
 if(!checkAnswer(answer2)){
-  alert('That\'s correct! I respect Battle Royales, but I just don\'t like to play them...');
+  alert(correctReplyArray[score]);
   score++;
-} else if (score === 0 ){
-  alert('Ouch! That\'s another one wrong. \nDon\'t worry, maybe you\'ll get the next one...');
 } else {
-  alert('Nope! I don\'t like Battle Royales. \nThat\'s alright, let\'s move on to the next one...');
+  alert(failReplyArray[failScore]);
+  failScore++;
 }
 console.log('User answered question #2 with: ' + answer2);
 console.log('Current score is: ' + score);
@@ -67,12 +86,11 @@ console.log('Current score is: ' + score);
 var answer3 = prompt('Here\'s an easy one: \nDo I like to code?');
 
 if(checkAnswer(answer3)){
-  alert('That\'s correct! \n You must be psychic...');
+  alert(correctReplyArray[score]);
   score++;
-} else if (score === 0 ){
-  alert('Ouch! Another one wrong. \nDon\'t worry, maybe you\'ll get the next one...');
 } else {
-  alert('Incorrect, sir! \nI\'ve been playing with code since I was a kid. I think it\'s safe to say that I like it...');
+  alert(failReplyArray[failScore]);
+  failScore++;
 }
 console.log('User answered question #3 with: ' + answer3);
 console.log('Current score is: ' + score);
@@ -80,12 +98,11 @@ console.log('Current score is: ' + score);
 var answer4 = prompt('Do I have a cat?');
 
 if(checkAnswer(answer4)){
-  alert('That\'s correct! \nHe loves me, but he can sometimes be a jerk about it.');
+  alert(correctReplyArray[score]);
   score++;
-} else if (score === 0 ){
-  alert('Wow! You\'re really bad at this. *ahem* I mean, hang in there champ... \nOne more question to go!');
 } else {
-  alert('That is inaccurate. I have a cat who is a total Momma\'s boy.');
+  alert(failReplyArray[failScore]);
+  failScore++;
 }
 console.log('User answered question #4 with: ' + answer4);
 console.log('Current score is: ' + score);
@@ -93,53 +110,55 @@ console.log('Current score is: ' + score);
 var answer5 = prompt('Do I play CandyCrush?');
 
 if(checkAnswer(answer5)){
+  alert(correctReplyArray[score]);
   score++;
-  alert('Correct!');
 } else {
-  alert('Sorry, wrong answer. I\'ve played all of the Candy Crush games. I even have three of them on my phone right now.');
+  alert(failReplyArray[failScore]);
+  failScore++;
 }
 console.log('User answered question #5 with: ' + answer5);
 console.log('Current score is: ' + score);
 
 var answer6;
 var dexAttempts = 0;
-while (answer6 !== dexPokemon && dexAttempts < 4){
+while(answer6 !== dexPokemon && dexAttempts < 4){
   answer6 = prompt('According to my Pokemon Go Pokedex, ' +
   'how many Pokemon have I caught?');
   dexAttempts++;
 }
 
 if(answer6 === dexPokemon){
+  alert(correctReplyArray[score]);
   score++;
-  alert('Correct!');
-}else {
-  alert('Sorry, you ran out of attempts');
+} else {
+  alert('Sorry, you ran out of attempts. No points for you.');
+  failScore++;
 }
 
 var platAttempts = 0;
-do {
+do{
   var answer7 = prompt('What gaming platform do I own? \n(Anything you can play a game on. For example: PS4.');
   platAttempts++;
-}
-while (!platformArray.includes(answer7.toLowerCase()) &&
+} while (!platformArray.includes(answer7.toLowerCase()) &&
   platAttempts < 6);
 
 //Used this page to figure out how to print array:
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
-var allPlats = platformArray.join(', ');
+var allPlats = platformArray.join(',\n');
 
 if(platformArray.includes(answer7.toLowerCase())){
-  alert('You are correct! Here are all of the possible answers:\n' +
+  alert(correctReplyArray[score] + '\n\nHere are all of the possible answers:\n' +
   allPlats);
   score++;
-}else {
-  alert('Sorry, you ran out of attempts. Here are the possible answers:\n' + allPlats);
+} else {
+  alert('Sorry, you ran out of attempts. We\'ll put that down as a \'Not Correct.\'\n\nHere are the possible \'correct\' answers:\n' + allPlats);
+  failScore++;
 }
 
 switch (score) {
 
 case 5:
-  alert(userName + ', it\'s weird how well you know me... Are you sure you\'re not my husband, Jeff? You got ' + score + ' questions correct.');
+  alert(userName + ', do I know you? Because You got all ' + score + ' questions correct.');
   break;
 
 case 1:
@@ -147,7 +166,7 @@ case 1:
   break;
 
 case 0:
-  alert('You know, ' + userName + 'scores don\'t matter here. After all, you\'re here to get to know me. It would be weird if you knew everything before you got here.');
+  alert('You know, ' + userName + ', scores don\'t matter here. After all, you\'re here to get to know me. It would be weird if you knew all the answers.');
   break;
 
 default:
@@ -171,5 +190,3 @@ function checkAnswer(answer) {
     return false;
   }
 }
-
-
