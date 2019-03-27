@@ -124,17 +124,16 @@ do {
 while (!platformArray.includes(answer7.toLowerCase()) &&
   platAttempts < 6);
 
-var allPlats; 
-for (var i; i < platformArray.length; i++){
-  allPlats += platformArray[i] + ', ';
-}
+//Used this page to figure out how to print array:
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+var allPlats = platformArray.join(', ');
 
 if(platformArray.includes(answer7.toLowerCase())){
-  alert('You are correct! Here are all of the possible answers: ' +
+  alert('You are correct! Here are all of the possible answers:\n' +
   allPlats);
   score++;
 }else {
-  alert('Sorry, you ran out of attempts. Here are the possible answers: ' + allPlats);
+  alert('Sorry, you ran out of attempts. Here are the possible answers:\n' + allPlats);
 }
 
 switch (score) {
