@@ -2,8 +2,9 @@
 
 var yesArray = ['yes', 'yeah', 'yup', 'yea', 'yep', 'y'];
 var noArray = ['no','nope','nuh-uh','n'];
-
+var platformArray = ['xbox one', 'xbox', 'playstation', 'playstation portable', 'psp', '3ds', 'gameboy', 'gameboy color', 'phone', 'mobile', 'sega', 'sega genesis', 'pc', 'computer', 'switch', 'nintendon switch'];
 var score = 0;
+var dexPokemon = '365';
 
 
 alert('Before we get into the serious stuff, let\'s play with some random trivia about me.');
@@ -11,7 +12,7 @@ alert('Before we get into the serious stuff, let\'s play with some random trivia
 var userName = prompt('But first, what\'s your name?');
 
 //Used the book to remember the exact switch syntax
-switch (userName.toLocaleLowerCase()) {
+switch (userName.toLowerCase()) {
 
 case 'paula':
   alert('That\'s my name too!');
@@ -79,7 +80,7 @@ console.log('Current score is: ' + score);
 var answer4 = prompt('Do I have a cat?');
 
 if(checkAnswer(answer4)){
-  alert('That\'s correct! \n He loves me, but he can sometimes be a jerk about it.');
+  alert('That\'s correct! \nHe loves me, but he can sometimes be a jerk about it.');
   score++;
 } else if (score === 0 ){
   alert('Wow! You\'re really bad at this. *ahem* I mean, hang in there champ... \nOne more question to go!');
@@ -101,15 +102,40 @@ console.log('User answered question #5 with: ' + answer5);
 console.log('Current score is: ' + score);
 
 var answer6;
-var attempts;
-while (answer6 !== 365 && attempts < 4){
+var dexAttempts = 0;
+while (answer6 !== dexPokemon && dexAttempts < 4){
   answer6 = prompt('According to my Pokemon Go Pokedex, ' +
   'how many Pokemon have I caught?');
-  attempts++;
+  dexAttempts++;
 }
 
-var answer7
+if(answer6 === dexPokemon){
+  score++;
+  alert('Correct!');
+}else {
+  alert('Sorry, you ran out of attempts');
+}
 
+var platAttempts = 0;
+do {
+  var answer7 = prompt('What gaming platform do I own? \n(Anything you can play a game on. For example: PS4.');
+  platAttempts++;
+}
+while (!platformArray.includes(answer7.toLowerCase()) &&
+  platAttempts < 6);
+
+var allPlats; 
+for (var i; i < platformArray.length; i++){
+  allPlats += platformArray[i] + ', ';
+}
+
+if(platformArray.includes(answer7.toLowerCase())){
+  alert('You are correct! Here are all of the possible answers: ' +
+  allPlats);
+  score++;
+}else {
+  alert('Sorry, you ran out of attempts. Here are the possible answers: ' + allPlats);
+}
 
 switch (score) {
 
@@ -118,7 +144,7 @@ case 5:
   break;
 
 case 1:
-  alert(userName + ', the scores are in, and you got ' + score + 'question correct! \n... \nDon\'t worry, it\'s better than nothing.');
+  alert(userName + ', the scores are in, and you got ' + score + ' question correct! \n... \nDon\'t worry, it\'s better than nothing.');
   break;
 
 case 0:
