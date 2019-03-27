@@ -2,7 +2,9 @@
 
 var yesArray = ['yes', 'yeah', 'yup', 'yea', 'yep', 'y'];
 var noArray = ['no','nope','nuh-uh','n'];
+
 var score = 0;
+
 
 alert('Before we get into the serious stuff, let\'s play with some random trivia about me.');
 
@@ -50,11 +52,11 @@ console.log('Current score is: ' + score);
 
 var answer2 = prompt('Next question: Do I play Fortnite?');
 
-if(checkAnswer(answer2)){
-  alert('Ouch! That\'s another one wrong. \nDon\'t worry, maybe you\'ll get the next one...');
-} else if (score === 0 ){
+if(!checkAnswer(answer2)){
   alert('That\'s correct! I respect Battle Royales, but I just don\'t like to play them...');
   score++;
+} else if (score === 0 ){
+  alert('Ouch! That\'s another one wrong. \nDon\'t worry, maybe you\'ll get the next one...');
 } else {
   alert('Nope! I don\'t like Battle Royales. \nThat\'s alright, let\'s move on to the next one...');
 }
@@ -90,22 +92,43 @@ console.log('Current score is: ' + score);
 var answer5 = prompt('Do I play CandyCrush?');
 
 if(checkAnswer(answer5)){
-  alert('It\'s weird how well you know me... Are you sure you\'re not my husband, Jeff?');
   score++;
-} else if (score === 0 ){
-  alert('I\'m not even going to tell you if you got that right. I think we both  know the outcome... \nIf I had a cookie, I would give it to you as a    consolation prize.');
+  alert('Correct!');
 } else {
   alert('Sorry, wrong answer. I\'ve played all of the Candy Crush games. I even have three of them on my phone right now.');
 }
 console.log('User answered question #5 with: ' + answer5);
 console.log('Current score is: ' + score);
 
-if(score > 1 ){
-  alert('Congratulations! You got ' + score + 'questions correct!');
-} else if (score === 1){
-  alert('Hey, you\'re on the board! You got 1 question correct!');
+var answer6;
+var attempts;
+while (answer6 !== 365 && attempts < 4){
+  answer6 = prompt('According to my Pokemon Go Pokedex, ' +
+  'how many Pokemon have I caught?');
+  attempts++;
 }
 
+var answer7
+
+
+switch (score) {
+
+case 5:
+  alert(userName + ', it\'s weird how well you know me... Are you sure you\'re not my husband, Jeff? You got ' + score + ' questions correct.');
+  break;
+
+case 1:
+  alert(userName + ', the scores are in, and you got ' + score + 'question correct! \n... \nDon\'t worry, it\'s better than nothing.');
+  break;
+
+case 0:
+  alert('You know, ' + userName + 'scores don\'t matter here. After all, you\'re here to get to know me. It would be weird if you knew everything before you got here.');
+  break;
+
+default:
+  alert('Great job, ' + userName + '! You got ' + score + ' questions correct!');
+  break;
+}
 
 // Didn't end up going this route, but used the example to remember how to write a function in js: https://www.w3schools.com/js/tryit.asp?filename=tryjs_form_elements
 
