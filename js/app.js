@@ -90,7 +90,8 @@ default:
 
 for(var i=0; i<questionArray.length -2;i++){
   var answer = askQuestion(currentQuestion);
-  checkAnswer(answer);
+  var tOF = checkAnswer(answer); 
+  reply(tOF);
 }
 
 
@@ -153,21 +154,26 @@ default:
 
 
 // Didn't end up going this route, but used the example to remember how to write a function in js: https://www.w3schools.com/js/tryit.asp?filename=tryjs_form_elements
+
 function checkAnswer(answer) {
-  var userAnswer;
 
   // Tried to use .contains (Java habits), but after getting an error I used this to fix it: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   if(yesArray.includes(answer.toLowerCase())){
     console.log('Input equates to: ' + true);
-    userAnswer=true;
+    return true;
   } else if (noArray.includes(answer.toLowerCase())){
     console.log('Input equates to: ' + false);
-    userAnswer=false;
+    return false;
   } else {
     console.log('Unrecognized Input');
-    userAnswer=answer;
+    return answer;
   }
-  if(userAnswer === answerArray[currentQuestion]){
+  
+}
+
+function reply(correctness){
+
+  if(correctness === answerArray[currentQuestion]){
     alert(correctReplyArray[score]);
     score++;
   } else {
