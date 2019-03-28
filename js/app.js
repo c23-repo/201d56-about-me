@@ -88,13 +88,15 @@ default:
   break;
 }
 
+for(var i=0; i<questionArray.length -2;i++){
+  var answer = askQuestion(currentQuestion);
+  checkAnswer(answer);
+}
 
-var answer = askQuestion(currentQuestion);
-checkAnswer(answer);
 
-
-var answer6;
 var dexAttempts = 0;
+var platAttempts = 0;
+var attempts= 0;
 while(answer6 !== dexPokemon && dexAttempts < 4){
   answer6 = prompt();
   dexAttempts++;
@@ -109,7 +111,7 @@ if(answer6 === dexPokemon){
 }
 
 
-var platAttempts = 0;
+
 do{
   var answer7 = prompt();
   platAttempts++;
@@ -163,7 +165,7 @@ function checkAnswer(answer) {
     userAnswer=false;
   } else {
     console.log('Unrecognized Input');
-    userAnswer=false;
+    userAnswer=answer;
   }
   if(userAnswer === answerArray[currentQuestion]){
     alert(correctReplyArray[score]);
