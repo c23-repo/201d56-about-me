@@ -97,27 +97,34 @@ for(var i=0; i<questionArray.length -2;i++){
 
 var dexAttempts = 0;
 var platAttempts = 0;
-var attempts= 0;
-while(answer6 !== dexPokemon && dexAttempts < 4){
-  answer6 = prompt();
+var isGuessRight=false;
+
+while(isGuessRight === false && dexAttempts < 4){ 
+  var loopAnswer=askQuestion(currentQuestion);
+  var tempAnswer=checkAnswer(loopAnswer);
+  currentQuestion--;
+  reply(isGuessRight);
   dexAttempts++;
+  if(answerArray[currentQuestion]===tempAnswer){
+    isGuessRight=true;
+  }
 }
 
-if(answer6 === dexPokemon){
-  alert(correctReplyArray[score]);
-  score++;
-} else {
-  alert('Sorry, you ran out of attempts. No points for you.');
-  failScore++;
-}
+// if(answer6 === dexPokemon){
+//   alert(correctReplyArray[score]);
+//   score++;
+// } else {
+//   alert('Sorry, you ran out of attempts. No points for you.');
+//   failScore++;
+// }
 
 
 
-do{
-  var answer7 = prompt();
-  platAttempts++;
-} while (!platformArray.includes(answer7.toLowerCase()) &&
-  platAttempts < 6);
+// do{
+//   var answer7 = prompt();
+//   platAttempts++;
+// } while (!platformArray.includes(answer7.toLowerCase()) &&
+//   platAttempts < 6);
 
 //Used this page to figure out how to print array:
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
